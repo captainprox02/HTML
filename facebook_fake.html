@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Facebook pha ke</title>
+    <link rel="SHORTCUT ICON" href="./facebook_image/facebook-icon.png">
+    <style>
+
+        :root {
+        --primary-color:        #2D88FF;
+        --background-color:     #18191A;
+        --background-lighter:   #242526;
+        --light-color:          #B0B3B8;
+        --text-color:           #E4E6EB;
+        --search-bar-bg:        #3A3B3C;
+        --menu-bg:              #03A9F4;
+        --green-secondary:      #2D88FF;
+        }
+
+        body{
+            background-color: var(--background-color);
+            margin: 0px;
+            padding: 0px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /*----------------------
+                NAV BAR 
+        -----------------------*/
+
+        .nav_bar{
+            background-color: var(--background-lighter);
+            display: flex;
+            justify-content: space-between;
+            height: 55px;
+            width: 100%;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            z-index: 99;
+        }
+
+        .nav_bar .left .facebook_icon{
+            height: 45px;
+            width: 45px;
+            margin: 5px;
+            float: left;
+        }
+
+        .nav_bar .left{
+            display: flex;
+            justify-content: center;
+            max-width: 30%;
+        }
+
+        .nav_bar .left .search{
+            background-color: var(--search-bar-bg);
+            width: 245px;
+            height: 40px;
+            margin: 8px;
+            border-radius: 25px;
+            float: left;
+        }
+
+        .nav_bar .search .search_icon{
+            height: 20px;
+            width: 20px;
+            margin: 10px;
+            float: left;
+        }
+        .nav_bar .search .search_text{
+            color: var(--light-color);
+            float: left;
+            margin: 13px 0px 20px 0px;
+        }
+
+        .nav_bar .center{
+            display: flex;
+            max-width: 40%;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 4;
+        }
+
+        .nav_bar .center .menu_bar_icon{
+            height: 25px;
+            width: 25px;
+            margin: 13px 35px 13px 35px;
+            box-sizing: border-box;
+        }
+
+        .gm{
+            background-image: url(./facebook_image/games.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            float: left;
+        }
+
+        .gm:hover{
+            background: url(./facebook_image/game_active.png) no-repeat;
+            background-size: contain;
+            float: left;
+        }
+
+        .hm{
+            background-image: url(./facebook_image/Home.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            float: left;
+        }
+
+        .hm:hover{
+            background: url(./facebook_image/home_active.png) no-repeat;
+            background-size: contain;
+            float: left;
+        }
+
+        .wt{
+            background-image: url(./facebook_image/watch.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+            float: left;
+        }
+
+        .wt:hover{
+            background: url(./facebook_image/watch_active.png) no-repeat;
+            background-size: contain;
+            float: left;
+        }
+
+        .mk{
+            background-image: url(./facebook_image/marketplace.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            float: left;
+        }
+
+        .mk:hover{
+            background: url(./facebook_image/marketplace_active.png) no-repeat;
+            background-size: contain;
+            float: left;
+        }
+
+        .gr{
+            background-image: url(./facebook_image/group.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            float: left;
+        }
+
+        .gr:hover{
+            background: url(./facebook_image/group_active.png) no-repeat;
+            background-size: contain;
+            float: right;
+        }
+
+        .nav_bar_menu:hover{
+            height:48px;
+            float:left;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .right{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 40%;
+        }
+
+        .right .profile{
+            display: flex;
+            align-items: center;
+        }
+
+        .avt{
+            border-radius: 50% !important;
+        }
+
+        .small_avt{
+            float: left;
+        }
+
+        .small_avt img{
+            height: 35px;
+            width: 35px;
+            border-radius: 50%;
+
+        }
+        .profile_name{
+            float: left;
+            margin: 10px 7px 10px 7px;
+            text-decoration: none;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .right_menu_item{
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--search-bar-bg);
+            margin: 0px 7px 0px 7px;
+            float: left;
+        }
+
+        .right_menu_item:hover{
+            background-color: #263951;
+        }
+
+        .right_menu_item .icon{
+            height: 20px;
+            width: 20px;
+        }
+
+        
+        .right_menu_item li{
+            list-style-type: none;
+        }
+    
+        .right_menu_item ul {  
+            position: absolute;  
+            visibility: hidden;  
+            top: 45px;  
+            right: 20px;
+            
+        }  
+    
+        .right_menu_item li:hover ul {  
+            visibility: visible;  
+        }  
+
+        .vertical-menu {
+            width: 350px;
+            height: fit-content;
+            overflow-y: auto;
+            border-radius: 10px;
+        }
+
+        .vertical-menu a {
+            background-color: var(--background-lighter);
+            color: var(--text-color);
+            display: block;
+            padding: 12px;
+            text-decoration: none;
+
+        }
+
+        .vertical-menu a:hover {
+            background-color: var(--search-bar-bg);
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: var(--background-color); 
+            border-radius: 10px;
+            padding: 2px;
+        }
+        
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.308); 
+            border-radius: 10px;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+        background: #555; 
+        }
+
+        .notification_title{
+            font-weight: 900;
+            font-size: 22px;
+        }
+
+        .notification_title p{
+            margin: 5px;
+        }
+
+        .new_title{
+            display: flex;
+            justify-content: space-between;
+            height: 15px;
+        }
+
+        .new_title .new{
+            float: left;
+            font-size: 17px;
+        }
+
+        .new_title .view_all{
+            float: right;
+            color: var(--primary-color);
+            font-size: 15px;
+        }
+
+        .medium_avt{
+            height: 55px;
+            width: 55px;
+        }
+
+        .notification_item{
+            display: flex;
+            align-items: flex-start; 
+            padding: 10px;
+            color: var(--text-color);
+            background: var(--background-lighter);
+        }
+
+        .notification_item span{
+            height: 20px;
+            margin-left: 10px;
+            display: inline-block;
+            max-width: 85%;
+        }
+
+        .notification_item .notification_text{
+            display: inline;
+        }
+        .notification_item .notification_text b{
+            color: var(--primary-color);
+            padding: 4px;
+        }
+
+         /*----------------------
+                CONTENT 
+        -----------------------*/
+
+        .content{
+            display: flex;
+            justify-content: space-between;
+            margin-top: 55px;
+            position: relative;
+        }
+
+        /*----------------------
+            LEFT CONTENT 
+        -----------------------*/
+
+        .left_content{
+            position: relative;
+        }
+
+        .left_menu{
+            margin-top: 10px;
+            max-width: 80%;
+            max-height: 90vh;
+            position: sticky;
+            top: 55px;
+        }
+
+        .left_content_item{
+            /* max-width: 80%; */
+            color: var(--text-color);
+            margin: 5px 5px 5px 10px;
+            padding: 7px;
+            display: flex;
+            justify-content: left;
+        }
+
+        .left_content_item:hover{
+            margin: 5px 5px 5px 10px;
+            color: var(--text-color);
+            background-color: var(--background-lighter);
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        .small_avt2{
+            height: 35px;
+            width: 35px;
+        }
+
+        .left_content_item span{
+            margin: 10px;
+        }
+
+        /*----------------------
+               CENTER CONTENT
+        -----------------------*/
+
+        /* story */
+
+        .story{
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .story_item{
+            height: 190px;
+            width: 110px;
+            margin: 3px;
+            background-color: var(--background-lighter);
+            border-radius: 10px;
+            color: var(--text-color);
+            font-weight: bold;
+        }
+
+        .first_story_item{
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            flex-direction: column;
+            background-image: url(./facebook_image/avt.jpg);
+            background-position: center;
+            background-size: cover;
+        }
+
+        .add_story{
+            height: 30px;
+            width: 30px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 4px solid var(--background-lighter);
+            position: absolute;
+            margin-bottom: 30px;
+        }
+
+        .add_story img{
+            height: 15px;
+            width: 15px;
+        }
+
+        .add_story_text{
+            display: block;
+            color: var(--text-color);
+            background-color: var(--background-lighter);
+            width: 110px;
+            text-align: center;
+            border-radius: 0px 0px 10px 10px;
+            height: 50px;
+        }
+
+        .add_story_text p{
+            padding-top: 10px;
+        }
+
+        .other_story{
+            background-image: url(./facebook_image/story_img.jpg);
+            background-position: center;
+            background-size: cover;
+        }
+
+        .avt_story img{
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            border: 3px solid var(--primary-color);
+            margin: 10px 0px 0px 10px;
+        }
+
+        .other_story .user_name{
+            margin-top: 115px;
+            margin-left: 10px;
+            font-weight: 600;
+        }
+
+        /* create post */
+        
+        .create_post{
+            display: flex;
+            background-color: var(--background-lighter);
+            height: 125px;
+            width: 100%;
+            margin: 10px 0px 10px 0px;
+            border-radius: 10px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .type_post{
+            display: flex;
+            justify-content: center;
+            flex-direction:row;
+            align-items: center;
+            width: 100%;
+            height: 45px;
+            margin: 10px;
+
+        }
+
+        .type_box_input input[type=text]{
+            background: var(--search-bar-bg);
+            border-radius: 50px;
+            width: 480px;
+            height: 40px;
+            padding: 0px 0px 0px 10px;
+            margin-left: 10px;
+            cursor: pointer;
+            outline: none;
+            border: none;
+            caret-color: var(--light-color);
+
+        }
+
+        .post_avt{
+            height: 45px;
+            width: 45px;
+        }
+
+        .line{
+            height: 1px;
+            width: 90%;
+            background-color: var(--search-bar-bg);
+        }
+
+        .type_post_menu{
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            flex-direction: row;
+        }
+
+        .type_post_menu_item{
+            display: flex;
+            flex-direction: row;
+            margin: 5px 20px 0px 20px;
+            align-items: center;
+            color: var(--light-color);
+            padding: 5px 10px 5px 10px;
+        }
+        .type_post_menu_item img{
+            width: 25px;
+        }
+
+        .type_post_menu_item span{
+            margin-left: 10px;
+            font-weight: 600;
+        }
+
+        .type_post_menu_item:hover {
+            background-color: var(--search-bar-bg);
+            padding: 5px 10px 5px 10px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        /* post */
+
+        .post{
+            background-color: var(--background-lighter);
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .post_info{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .post_info .info{
+            display: flex;
+            align-items: center;
+            padding: 10px 10px 0px 10px;
+        }
+
+        .post_info .info span b{
+            color: var(--text-color);
+            font-size: 13px;
+        }
+
+        .post_info .info span{
+            color: var(--light-color);
+            font-size: -1px;
+            font-weight: bolder;
+            margin-left: 10px;
+        }
+
+        .post_info .more{
+            height: 20px;
+            width: 20px;
+            color: var(--light-color);
+            font-weight: bolder;
+            font-size: 19px;
+            margin-right: 10px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0px 3px 6px 3px;
+        }
+        .post_info .more:hover{
+            background-color: var(--search-bar-bg);
+            border-radius: 50%;
+        }
+
+        .info span img{
+            height: 12px;
+            width: 12px;
+        }
+
+        .post_text{
+            color: var(--text-color);
+            padding-left: 10px;
+        }
+
+        .post_text p{
+            max-width: 450px;
+        }
+
+        .post_img img{
+            height: 100%;
+            width: fit-content;
+            max-width: 585px;
+            max-height: 585px;
+        }
+
+        .enmoji_and_comment{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--light-color);
+            padding: 5px 10px 5px 5px;
+        }
+
+        .enmoji_and_comment .emoji span{
+            display: flex;
+            align-items: center;
+           
+        }
+        .enmoji_and_comment .emoji img{
+            height: 25px;
+            width: 45px;
+        }
+
+        .post_line{
+            display: flex;
+            justify-content: center;
+        }
+
+        .like_share{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 5px 0px 5px 0px;
+        }
+
+        .like_share .activity{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-color);
+            font-weight: 600;
+            padding: 0px 5px 0px 5px;
+        }
+
+        .like_share .activity:hover{
+            background-color: var(--search-bar-bg);
+            border-radius: 10px;
+            padding: 0px 5px 0px 5px;
+            cursor: pointer;
+        }
+
+        .react_enmoji{
+            position: absolute;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+            background-color: var(--background-lighter);
+            border-radius: 20px;
+            visibility: hidden;
+        }
+
+        .like_share .like:hover .react_enmoji{
+            visibility: visible;
+        }
+
+        .react_enmoji img{
+            width:  30px;
+            height: 30px !important;
+            padding: 5px;
+        }
+
+        .react_enmoji img:hover{
+            width:  35px;
+            height: 35px !important;
+            padding: 5px;
+        }
+
+        .like_share img{
+            padding: 5px;
+            height: 20px;
+        }
+
+        .relevancy{
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            color: var(--light-color);
+            font-weight: 600;
+            padding: 10px;
+        }
+
+        .relevancy img{
+            height: 12px;
+        }
+
+        .comment{
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-direction: row;
+            padding: 0px 10px 5px 10px;
+        }
+
+        .comment_input{
+            background-color: var(--search-bar-bg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px;
+            width: 100%;
+            margin: 0px 0px 5px 10px;
+            border-radius: 50px;
+        }
+
+        .comment_input .comment_icon{
+            display: flex;
+            flex-direction: row;
+            justify-content: stretch;
+            align-items: center;
+        }
+
+        .comment_input input{
+            outline: none;
+            border: none;
+            caret-color: var(--light-color);
+            background: var(--search-bar-bg);
+            margin-left: 10px;
+        }
+
+        .comment_input .comment_icon img{
+            height: 15px;
+            padding: 5px;
+        }
+
+        /* right content */
+
+        .right_content{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            margin: 5px 5px 5px 10px;
+            width: 350px;
+        }
+
+        .right_sticky_content{
+            position: sticky;
+            top: 55px;
+            height: fit-content;
+            overflow-y: auto;
+            max-height: 90vh;
+        }
+
+        .right_sticky_content .right_content_title{
+            color: var(--light-color);
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-content: center;
+            font-size: 16px;
+            padding: 10px;
+        }
+
+        .right_content_line{
+            width: 100%;
+        }
+        .right_content_line .line{
+            height: 1px;
+            background-color: var(--search-bar-bg);
+        }
+        .right_content_title .content_title_icon{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .right_content_title span{
+            display: flex;
+            align-items: center;
+        }
+
+        .right_content_title .content_title_icon img{
+            padding: 5px;
+            height: 20px;
+            width: 20px;
+        }
+
+        .other_friend{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 0px 10px 10px 10px;
+            color: var(--light-color);
+            font-weight: 600;
+        }
+
+        .other_friend .friend_info{
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 5px;
+            margin: 7px;
+        }
+
+        .other_friend .friend_info:hover{
+            background-color: var(--search-bar-bg);
+            border-radius: 10px;
+            margin: 7px;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav_bar">
+
+        <div class="left"> 
+            <div>
+                <a href="#">
+                    <img class="facebook_icon" src="./facebook_image/facebook-icon.png" alt="">
+                </a>
+
+                <div class="search">
+                    <span>
+                        <div>
+                            <img class="search_icon" src="./facebook_image/search.png" alt="">
+                        </div>
+                        <span class="search_text"> Mày tìm info gái đúng khum</span>
+                    </span>      
+                </div>
+            </div>
+            
+            
+        </div>
+
+        <div class="center">
+            <div>
+                <a class="nav_bar_menu" href="#">
+                    <div class="menu_bar_icon hm">
+                    </div>
+                </a>
+
+                <a class="nav_bar_menu" href="#">
+                    <div class="menu_bar_icon wt">
+
+                    </div>
+
+                </a>
+                
+                <a class="nav_bar_menu" href="#">
+                    <div class="menu_bar_icon mk">
+
+                    </div>
+
+                </a>
+
+                <a class="nav_bar_menu" href="#">
+                    <div class="menu_bar_icon gr"></div>
+
+                </a>
+
+                <a class="nav_bar_menu" href="#">
+                    <div class="menu_bar_icon gm"></div>     
+                </a>
+
+            </div>
+        </div>
+
+        <div class="right">
+            <div class="profile">
+                <a href="#">
+                    <div class="avt small_avt">
+                        <img src="./facebook_image/avt.jpg" alt="">
+                    </div>
+                    <div class="profile_name">
+                        Prox
+                    </div>
+                </a>
+            </div>
+
+            <div class="right_menu">
+                <div class="right_menu_item">
+                    <img class="icon" src="./facebook_image/add.png" alt="">
+                </div>
+                <div class="right_menu_item">
+                    <img class="icon" src="./facebook_image/messenger.png" alt="">
+                </div>
+                <div class="right_menu_item">
+                    <li>
+                        <img class="icon notification" src="./facebook_image/notification.png" alt="">    
+                        <ul>    
+                            <li>
+                                <div class="vertical-menu">
+                                    <a class="notification_title" href="#">
+                                        <p>
+                                            Thông báo
+                                        </p>
+                                    </a>
+                                    <a class="new_title" href="#">
+                                        <div class="new">
+                                            <b>Mới</b>
+                                        </div>
+                                        <div class="view_all">
+                                            <span>Xem tất cả</span>
+                                        </div>
+                                    </a>
+                                    <div class="notification_item" href="#">
+                                        <img class="avt medium_avt" src="./facebook_image/avt2.png" alt="">
+                                        <div class="notification_text">
+                                            <span> Thằng bạn thân đã nhắc đến bạn trong một bình luận  <br> <b>5 giờ trước</b></span>
+                                        </div>
+                                    </div>
+                                    <div class="notification_item" href="#">
+                                        <img class="avt medium_avt" src="./facebook_image/avt2.png" alt="">
+                                        <div class="notification_text">
+                                            <span> Thằng bạn thân đã nhắc chửi xéo bạn trong một bình luận <br> <b>5 giờ trước</b></span>
+                                        </div>
+                                    </div>
+                                    <div class="notification_item" href="#">
+                                        <img class="avt medium_avt" src="./facebook_image/avt2.png" alt="">
+                                        <div class="notification_text">
+                                            <span> Thằng bạn thân đã cà khịa  bạn trong một bình luận <br> <b>5 giờ trước</b></span>
+                                        </div>
+                                    </div>
+                                    <div class="notification_item" href="#">
+                                        <img class="avt medium_avt" src="./facebook_image/avt2.png" alt="">
+                                        <div class="notification_text">
+                                            <span> Thằng bạn thân đã cua người yêu bạn trong một bình luận <br> <b>5 giờ trước</b></span>
+                                        </div>
+                                    </div>
+                                    <div class="notification_item" href="#">
+                                        <img class="avt medium_avt" src="./facebook_image/avt2.png" alt="">
+                                        <div class="notification_text">
+                                            <span> Thằng bạn thân đã thả tim ảnh Người yêu bạn <br> <b>5 giờ trước</b></span>
+                                        </div>
+                                    </div>
+                                    <div class="notification_item" href="#">
+                                        <img class="avt medium_avt" src="./facebook_image/avt2.png" alt="">
+                                        <div class="notification_text">
+                                            <span> Thằng bạn thân đã thả phẫn nộ ảnh đại diện  của bạn <br> <b>5 giờ trước</b></span>
+                                        </div>
+                                    </div>
+                                  </div>
+                            </li>  
+                        </ul>
+                    </li>
+                </div>
+                <div class="right_menu_item">
+                    <img class="icon" src="./facebook_image/more.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="content">
+        <div class="left_content">
+            <div class="vertical-menu left_menu">
+                <div class="left_content_item">
+                    <img class="avt small_avt2" src="./facebook_image/avt.jpg" alt="">
+                    <span> Captain Prox</span>
+                </div>
+                <div class="left_content_item">
+                    <img class="avt small_avt2" src="./facebook_image/friend.png" alt="">
+                    <span>Bạn bè</span>
+                </div>
+                <div class="left_content_item">
+                    <img class="avt small_avt2" src="./facebook_image/leftgroup.png" alt="">
+                    <span>Nhóm</span>
+                </div>
+                <div class="left_content_item">
+                    <img class="avt small_avt2" src="./facebook_image/leftmaket.png" alt="">
+                    <span> Marketplace</span>
+                </div>
+                <div class="left_content_item">
+                    <img class="avt small_avt2" src="./facebook_image/leftwatch.png" alt="">
+                    <span> Watch</span>
+                </div>
+                <div class="left_content_item">
+                    <img class="avt small_avt2" src="./facebook_image/kiniem.png" alt="">
+                    <span> Kỷ niệm</span>
+                </div>
+                <div class="left_content_item">
+                    <img class="avt small_avt2" src="./facebook_image/saved.png" alt="">
+                    <span> Đã lưu</span>
+                </div>
+                <div class="left_content_item">
+                    <img class="avt small_avt2" src="./facebook_image/pages.png" alt="">
+                    <span> Trang</span>
+                </div>
+                <div class="left_content_item">
+                    <img class="avt small_avt2" src="./facebook_image/volumtee.png" alt="">
+                    <span> Chiến dịch gây quỹ</span>
+                </div>
+                <div class="left_content_item">
+                    <img class="avt small_avt2" src="./facebook_image/leftgame.png" alt="">
+                    <span>Chơi game</span>
+                </div>
+                <div class="left_content_item">
+                    <img class="avt small_avt2" src="./facebook_image/payment.png" alt="">
+                    <span>Facebook Pay</span>
+                </div>
+                <div class="left_content_item">
+                    <img class="avt small_avt2" src="./facebook_image/lastest.png" alt="">
+                    <span> Gần đây nhất</span>
+                </div>
+                <div class="left_content_item">
+                    <img class="avt small_avt2" src="./facebook_image/weather.png" alt="">
+                    <span> Thời tiết<td></td></span>
+                </div>
+            </div>
+        </div>
+        <div class="center_content">
+            <div class="story">
+                <div class="story_item first_story_item">
+                    <div class="add_story">
+                         <img src="./facebook_image/add.png" alt="">                       
+                    </div>
+
+                    <div class="add_story_text">
+                        <p>Tạo Tin</p>
+                    </div>
+                </div>
+                <div class="story_item other_story">
+                    <div class="avt_story">
+                        <img src="./facebook_image/avt2.png" alt="">
+                    </div>
+                    <div class="user_name">
+                        Crush
+                    </div>
+                </div>
+                <div class="story_item other_story">
+                    <div class="avt_story">
+                        <img src="./facebook_image/avt2.png" alt="">
+                    </div>
+                    <div class="user_name">
+                        TRITHUHAI
+                    </div>
+                </div>
+                <div class="story_item other_story">
+                    <div class="avt_story">
+                        <img src="./facebook_image/avt2.png" alt="">
+                    </div>
+                    <div class="user_name">
+                        Hảo wjbu
+                    </div>
+                </div>
+                <div class="story_item other_story">
+                    <div class="avt_story">
+                        <img src="./facebook_image/avt2.png" alt="">
+                    </div>
+                    <div class="user_name">
+                        Chị gái Crush
+                    </div>
+                </div>
+            </div>
+
+            <div class="create_post">
+                <div class="type_post">
+                    <div>
+                        <img class="avt post_avt" src="./facebook_image/avt.jpg" alt="">
+                    </div>
+                    <div class="type_box_input">
+                        <input placeholder="Prox ơi, bài mày nhạt vl có ai care đâu !" type="text">
+                    </div>
+                </div>
+
+                <div class="line"></div>
+                
+                <div class="type_post_menu">
+                    <div class="type_post_menu_item">
+                        <img src="./facebook_image/livestream.png" alt="">
+                        <span>Video trực tiếp</span>
+                    </div>
+
+                    <div class="type_post_menu_item">
+                        <img src="./facebook_image/picture.png" alt="">
+                        <span>Ảnh/Video</span>
+                    </div>
+
+                    <div class="type_post_menu_item">
+                        <img src="./facebook_image/avtivity.png" alt="">
+                        <span>Cảm xúc/Hoạt động</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="post">
+                <div class="post_info">
+                    <div class="info">
+                        <img class="avt post_avt" src="./facebook_image/avt.jpg" alt="">
+                        <span> <b>Captain Prox</b> <br> 29 tháng 10 lúc 02:47 · <img src="./facebook_image/public_icon.png" alt=""> </span>
+                    </div>
+                    <div class="more">
+                        <span>...</span>
+                    </div>
+                </div>
+                <div class="post_text">
+                    <p>
+                        Đẹp trai, nhà giàu, học giỏi, tư duy đỉnh cao là thứ tôi không có :>
+                    </p>
+                </div>
+                <div class="post_img">
+                    <img src="./image/avt.jpg" alt="">
+                </div>
+                <div class="enmoji_and_comment">
+                    <div class="emoji">
+                        <span>
+                            <img src="./facebook_image/enmoji.png" alt="">
+                            <span>Mark ZukerBug và n+1 người khác</span>
+                        </span>
+                    </div>
+                    <div class="comment">
+                        <span>  2n+1 bình luận n+1 lượt chia sẻ</span>
+                    </div>
+                </div>
+
+                <div class="post_line">
+                    <div class="line"></div>
+                </div>
+
+                <div class="like_share">
+
+                    <div class="activity like">
+                        <img src="./facebook_image/like.png" alt="">
+                        <span>Thích</span>
+                        <div class="react_enmoji">
+                            <img src="./facebook_image/enmoji_like.png" alt="">
+                            <img src="./facebook_image/enmoji_favorite.png" alt="">
+                            <img src="./facebook_image/enmoji_love.png" alt="">
+                            <img src="./facebook_image/enmoji_haha.png" alt="">
+                            <img src="./facebook_image/enmoji_wow.png" alt="">
+                            <img src="./facebook_image/enmoji_sad.png" alt="">
+                            <img src="./facebook_image/enmoji_angry.png" alt="">
+                        </div>
+                    </div>
+
+                    <div class="activity">
+                        <img src="./facebook_image/comment.png" alt="">
+                        <span>Bình luận</span>
+                    </div>
+
+                    <div class="activity">
+                        <img src="./facebook_image/share.png" alt="">
+                        <span>Chia sẻ</span>
+                    </div>
+                    
+                </div>
+
+                <div class="post_line">
+                    <div class="line"></div>
+                </div>
+                
+                <div class="relevancy">
+                    <span>Phù hợp nhất <img src="./facebook_image/post_menu.png" alt=""></span>
+                </div>
+
+                <div class="comment">
+                    <div class="avt small_avt">
+                        <img src="./facebook_image/avt.jpg" alt="">
+                    </div>
+                    <div class="comment_input">
+                        <input type="text">
+                        <div class="comment_icon">
+                            <img src="./facebook_image/cmt_sticker.png" alt="">
+                            <img src="./facebook_image/cmt_emoji.png" alt="">
+                            <img src="./facebook_image/cmt_camera.png" alt="">
+                            <img src="./facebook_image/cmt_gif.png" alt="">
+                            <img src="./facebook_image/cmt_sticker2.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="post">
+                <div class="post_info">
+                    <div class="info">
+                        <img style="border: 4px solid var(--primary-color); padding: 2px;" class="avt post_avt" src="./facebook_image/avt2.png" alt="">
+                        <span> <b>Crush</b> <br> 30 tháng 02 lúc 13:47 · <img src="./facebook_image/public_icon.png" alt=""> </span>
+                    </div>
+                    <div class="more">
+                        <span>...</span>
+                    </div>
+                </div>
+                <div class="post_text">
+                    <p>
+                        Anh người yêu đẹp try quá hà !!
+                    </p>
+                </div>
+                <div class="post_img">
+                    <img src="./image/avt.jpg" alt="">
+                </div>
+                <div class="enmoji_and_comment">
+                    <div class="emoji">
+                        <span>
+                            <img src="./facebook_image/enmoji.png" alt="">
+                            <span>Mark ZukerBug và n+1 người khác</span>
+                        </span>
+                    </div>
+                    <div class="comment">
+                        <span>  2n+1 bình luận n+1 lượt chia sẻ</span>
+                    </div>
+                </div>
+
+                <div class="post_line">
+                    <div class="line"></div>
+                </div>
+
+                <div class="like_share">
+
+                    <div class="activity like">
+                        <img src="./facebook_image/like.png" alt="">
+                        <span>Thích</span>
+                        <div class="react_enmoji">
+                            <img src="./facebook_image/enmoji_like.png" alt="">
+                            <img src="./facebook_image/enmoji_favorite.png" alt="">
+                            <img src="./facebook_image/enmoji_love.png" alt="">
+                            <img src="./facebook_image/enmoji_haha.png" alt="">
+                            <img src="./facebook_image/enmoji_wow.png" alt="">
+                            <img src="./facebook_image/enmoji_sad.png" alt="">
+                            <img src="./facebook_image/enmoji_angry.png" alt="">
+                        </div>
+                    </div>
+
+                    <div class="activity">
+                        <img src="./facebook_image/comment.png" alt="">
+                        <span>Bình luận</span>
+                    </div>
+
+                    <div class="activity">
+                        <img src="./facebook_image/share.png" alt="">
+                        <span>Chia sẻ</span>
+                    </div>
+                    
+                </div>
+
+                <div class="post_line">
+                    <div class="line"></div>
+                </div>
+                
+                <div class="relevancy">
+                    <span>Phù hợp nhất <img src="./facebook_image/post_menu.png" alt=""></span>
+                </div>
+
+                <div class="comment">
+                    <div class="avt small_avt">
+                        <img src="./facebook_image/avt.jpg" alt="">
+                    </div>
+                    <div class="comment_input">
+                        <input type="text">
+                        <div class="comment_icon">
+                            <img src="./facebook_image/cmt_sticker.png" alt="">
+                            <img src="./facebook_image/cmt_emoji.png" alt="">
+                            <img src="./facebook_image/cmt_camera.png" alt="">
+                            <img src="./facebook_image/cmt_gif.png" alt="">
+                            <img src="./facebook_image/cmt_sticker2.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right_content">
+            <div class="right_sticky_content">
+                <div class="right_content_title">
+                    <span>Được tài trợ</span>
+                </div>
+
+                <div class="right_content_line">
+                    <div class="line"></div>
+                </div>
+
+                <div class="right_content_title">
+                    <span>Người liên hệ</span>
+                    <div class="content_title_icon">
+                        <img src="./facebook_image/right_content_watch.png" alt="">
+                        <img src="./facebook_image/right_content_search.png" alt="">
+                        <img src="./facebook_image/right_content_more.png" alt="">
+                    </div>
+                </div>
+
+                <div class="other_friend">
+                    <div class="friend_info">
+                        <div class="avt small_avt">
+                            <img src="./facebook_image/avt2.png" alt="">
+                        </div>
+                        <span>
+                            Thằng bạn thân
+                        </span>
+                    </div>
+                    <div class="friend_info">
+                        <div class="avt small_avt">
+                            <img src="./facebook_image/avt2.png" alt="">
+                        </div>
+                        <span>
+                            Hảo Huynh Đệ
+                        </span>
+                    </div>
+                    <div class="friend_info">
+                        <div class="avt small_avt">
+                            <img src="./facebook_image/avt2.png" alt="">
+                        </div>
+                        <span>
+                            Hảo Hảo chua cay
+                        </span>
+                    </div>
+                    <div class="friend_info">
+                        <div class="avt small_avt">
+                            <img src="./facebook_image/avt2.png" alt="">
+                        </div>
+                        <span>
+                            Chúa tể ngôn từ
+                        </span>
+                    </div>
+                    <div class="friend_info">
+                        <div class="avt small_avt">
+                            <img src="./facebook_image/avt2.png" alt="">
+                        </div>
+                        <span>
+                            Crush
+                        </span>
+                    </div>
+                    <div class="friend_info">
+                        <div class="avt small_avt">
+                            <img src="./facebook_image/avt2.png" alt="">
+                        </div>
+                        <span>
+                            Chị gái crush
+                        </span>
+                    </div>
+                    <div class="friend_info">
+                        <div class="avt small_avt">
+                            <img src="./facebook_image/avt2.png" alt="">
+                        </div>
+                        <span>
+                            Crush của bạn thân
+                        </span>
+                    </div>
+                    <div class="friend_info">
+                        <div class="avt small_avt">
+                            <img src="./facebook_image/avt2.png" alt="">
+                        </div>
+                        <span>
+                            Vợ sếp
+                        </span>
+                    </div>
+                    <div class="friend_info">
+                        <div class="avt small_avt">
+                            <img src="./facebook_image/avt2.png" alt="">
+                        </div>
+                        <span>
+                            Chú thợ sửa ống nước
+                        </span>
+                    </div>
+                    <div class="friend_info">
+                        <div class="avt small_avt">
+                            <img src="./facebook_image/avt2.png" alt="">
+                        </div>
+                        <span>
+                            Chú thợ điện
+                        </span>
+                    </div>
+                    <div class="friend_info">
+                        <div class="avt small_avt">
+                            <img src="./facebook_image/avt2.png" alt="">
+                        </div>
+                        <span>
+                            Yasuo 1 10
+                        </span>
+                    </div>
+                    <div class="friend_info">
+                        <div class="avt small_avt">
+                            <img src="./facebook_image/avt2.png" alt="">
+                        </div>
+                        <span>
+                            TRITHUHAI
+                    </div>
+                    <div class="friend_info">
+                        <div class="avt small_avt">
+                            <img src="./facebook_image/avt2.png" alt="">
+                        </div>
+                        <span>
+                            Hảo Wjbu
+                        </span>
+                    </div>
+                    <div class="friend_info">
+                        <div class="avt small_avt">
+                            <img src="./facebook_image/avt2.png" alt="">
+                        </div>
+                        <span>
+                            Hảo lolicon
+                        </span>
+                    </div
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
