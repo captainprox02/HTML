@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buoi 2 JavaScript</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://wallpaperaccess.com/full/3781373.jpg');
+            background-repeat: no-repeat;
+            background-size:cover;
+            color: rgb(68, 68, 68);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container{
+            background-color: #ffffffaf;
+            border-radius: 7px;
+            backdrop-filter: blur(30px);
+            max-width: 600px;
+        }
+
+        .task{
+            background-color: #f3f5f6c0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+            padding: 0px;
+            height: 30px;
+            border-radius: 7px 7px 0px 0px;
+        }
+
+        .dot{
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+        }
+
+        .circle{
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            margin-left: 5px;
+        }
+        .red{
+            background-color: #FF6F6F;
+        }
+
+        .yellow{
+            background-color: #F7DA87;
+        }
+        .green{
+            background-color:  #B0DDBE;
+        }
+
+        .task .title{
+            margin-left: 5px;
+        }
+
+        .empty{
+            width: 45px;
+        }
+
+        .main{
+            padding: 10px;
+            border-radius: 0px 0px 5px 5px;
+        }
+
+        .input input[type=number]{
+            border: 1px solid #e4e4e4;
+            outline: none;
+            background-color: #F3F5F6;
+            padding: 2px;
+            border-radius: 3px;
+        }
+
+        .input input[type=button]{
+            border: 1px solid #0eb7ff;
+            outline: none;
+            background-color: #00B0FC;
+            padding: 2px;
+            color: #fff;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .output{
+            background-color: #ffffff57;
+            border: 1px solid #ffffff4b;
+            margin-top: 10px;
+            border-radius: 3px;
+        }
+        .output p{
+            padding: 0px 5px 0px 5px;
+            margin: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="task">
+            <!-- cai nay de cho dep thoi hjhj -->
+            <div class="dot">
+                <div class="circle red"></div>
+                <div class="circle yellow"></div>
+                <div class="circle green"></div>
+            </div>
+            
+            <p class="title">Bài 4</p>
+            <div class="empty"></div>
+        </div>
+        <div class="main">
+            <div class="input">
+                <input type="number" id="number_input" placeholder="Nhập một số">
+                <input type="button" value="Xét tính chẳn, lẻ, thập phân, nguyên tố" onclick="tinh_toan()">  
+            </div>
+            <div class="output">
+                <p id="ket_qua">Kết quả</p>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    document.getElementById('number_input').onkeydown = function(e){
+        if(e.keyCode == 13){
+            tinh_toan();
+        }
+    };
+
+    let so_lan_nhap = 0;
+
+    function kiem_tra_snt(n){
+        // Biến cờ hiệu
+        var flag = true;
+    
+       
+        if (n < 2){
+            flag = false;
+        }
+        else{
+            
+            for (var i = 2; i < n-1; i++)
+            {
+                if (n % i == 0){
+                    flag = false;
+                    break;
+                }
+            }
+        }
+    
+        
+        if (flag == true){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    function tinh_toan(){
+        let so = document.getElementById('number_input').value;
+        let result = '';
+
+        if(so !== ''){
+
+            if(so % 1 ==0){
+                if(so % 2 == 0){
+                    result = result + `| ${so} la so chan <br/>`;
+                }else if(so % 2 == 1){
+                    result = result + `| ${so} la so le <br/>`;
+                }
+
+                if(kiem_tra_snt(so) == true){
+                    result = result + `| ${so} la so nguyen to <br/>`;
+                }else{
+                    result = result + `| ${so} khong phai la so nguyen to <br/>`;
+                }
+            }else{
+                result = result + `| ${so} la so thap phan <br/>`; 
+            }
+            
+
+            if(so > 0){
+                result = result + `| In ra cac so tu 1 den ${so}: `;
+                for(index = 1 ; index <= so ; index++){
+                    result = result + `${index} `;
+                }
+            }
+            if(so < 0){
+                result = result + `| In ra cac so tu ${so} den 1: `;
+                for(index = so ; index <= 1 ; index++){
+                    result = result + `${index} `;
+                }
+            }
+        
+            so_lan_nhap += 1;
+        }
+
+        document.getElementById('ket_qua').innerHTML= `${result} <br/>| So luonng so da nhap: ${so_lan_nhap}`;
+    }
+</script>
+</html>
