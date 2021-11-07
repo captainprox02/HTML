@@ -136,13 +136,12 @@
     let so_lan_nhap = 0;
 
     function kiem_tra_snt(n){
-        // Biến cờ hiệu
-        var flag = true;
+        let flag = true;
     
-       
         if (n < 2){
             flag = false;
         }
+
         else{
             
             for (var i = 2; i < n-1; i++)
@@ -154,10 +153,10 @@
             }
         }
     
-        
         if (flag == true){
             return true;
         }
+        
         else{
             return false;
         }
