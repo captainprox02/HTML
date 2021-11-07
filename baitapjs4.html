@@ -156,7 +156,7 @@
         if (flag == true){
             return true;
         }
-        
+
         else{
             return false;
         }
@@ -170,29 +170,29 @@
 
             if(so % 1 ==0){
                 if(so % 2 == 0){
-                    result = result + `| ${so} la so chan <br/>`;
+                    result = result + `| ${so} là một số chẵn <br/>`;
                 }else if(so % 2 == 1){
-                    result = result + `| ${so} la so le <br/>`;
+                    result = result + `| ${so} là một số lẻ <br/>`;
                 }
 
                 if(kiem_tra_snt(so) == true){
-                    result = result + `| ${so} la so nguyen to <br/>`;
+                    result = result + `| ${so} là một số nguyên tố <br/>`;
                 }else{
-                    result = result + `| ${so} khong phai la so nguyen to <br/>`;
+                    result = result + `| ${so} không phải là một số nguyên tố  <br/>`;
                 }
             }else{
-                result = result + `| ${so} la so thap phan <br/>`; 
+                result = result + `| ${so} là số thập phân <br/>`; 
             }
             
 
             if(so > 0){
-                result = result + `| In ra cac so tu 1 den ${so}: `;
+                result = result + `| In ra các số nguyên từ 1 đến ${so}: `;
                 for(index = 1 ; index <= so ; index++){
                     result = result + `${index} `;
                 }
             }
             if(so < 0){
-                result = result + `| In ra cac so tu ${so} den 1: `;
+                result = result + `| In ra các số nguyên từ ${so} đến 1: `;
                 for(index = so ; index <= 1 ; index++){
                     result = result + `${index} `;
                 }
@@ -201,7 +201,7 @@
             so_lan_nhap += 1;
         }
 
-        document.getElementById('ket_qua').innerHTML= `${result} <br/>| So luonng so da nhap: ${so_lan_nhap}`;
+        document.getElementById('ket_qua').innerHTML= `${result} <br/>| Số lượng số đã nhập: ${so_lan_nhap}`;
     }
 </script>
 </html>
