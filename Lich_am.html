@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buoi 2 JavaScript</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://wallpaperaccess.com/full/3781373.jpg');
+            background-repeat: no-repeat;
+            background-size:cover;
+            color: rgb(68, 68, 68);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container{
+            background-color: #ffffffaf;
+            border-radius: 7px;
+            backdrop-filter: blur(30px);
+            max-width: 600px;
+        }
+
+        .task{
+            background-color: #f3f5f6c0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+            padding: 0px;
+            height: 30px;
+            border-radius: 7px 7px 0px 0px;
+        }
+
+        .dot{
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+        }
+
+        .circle{
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            margin-left: 5px;
+        }
+        .red{
+            background-color: #FF6F6F;
+        }
+
+        .yellow{
+            background-color: #F7DA87;
+        }
+        .green{
+            background-color:  #B0DDBE;
+        }
+
+        .task .title{
+            margin-left: 5px;
+        }
+
+        .empty{
+            width: 45px;
+        }
+
+        .main{
+            padding: 10px;
+            border-radius: 0px 0px 5px 5px;
+        }
+
+        .input input[type=number]{
+            border: 1px solid #e4e4e4;
+            outline: none;
+            background-color: #F3F5F6;
+            padding: 2px;
+            border-radius: 3px;
+            max-width: 50px;
+        }
+
+        .input input[type=button]{
+            border: 1px solid #0eb7ff;
+            outline: none;
+            background-color: #00B0FC;
+            padding: 2px;
+            color: #fff;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .output{
+            background-color: #ffffff57;
+            border: 1px solid #ffffff4b;
+            margin-top: 10px;
+            border-radius: 3px;
+        }
+        .output p{
+            padding: 0px 5px 0px 5px;
+            margin: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="task">
+            <!-- cai nay de cho dep thoi hjhj -->
+            <div class="dot">
+                <div class="circle red"></div>
+                <div class="circle yellow"></div>
+                <div class="circle green"></div>
+            </div>
+            
+            <p class="title">Bài 4</p>
+            <div class="empty"></div>
+        </div>
+        <div class="main">
+            <div class="input">
+                <input type="number" maxlength="2" id="lunnarDay" placeholder="dd">
+                /
+                <input type="number" maxlength="2" id="lunnarMonth" placeholder="mm">
+                /
+                <input type="number" maxlength="4" id="lunnarYear" placeholder="yy">
+                <input type="button" value="Xem lich am" onclick="showDateTime()">  
+            </div>
+            <div class="output">
+                <p id="ngayam">Kết quả</p>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./amlich.js"></script>
+</html>
