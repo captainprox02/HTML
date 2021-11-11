@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buoi 3 JavaScript</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://wallpaperaccess.com/full/3781373.jpg');
+            background-repeat: no-repeat;
+            background-size:cover;
+            color: rgb(68, 68, 68);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container{
+            background-color: #ffffffaf;
+            border-radius: 7px;
+            backdrop-filter: blur(30px);
+            max-width: 600px;
+        }
+
+        .task{
+            background-color: #f3f5f6c0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+            padding: 0px;
+            height: 30px;
+            border-radius: 7px 7px 0px 0px;
+        }
+
+        .dot{
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+        }
+
+        .circle{
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            margin-left: 5px;
+        }
+        .red{
+            background-color: #FF6F6F;
+        }
+
+        .yellow{
+            background-color: #F7DA87;
+        }
+        .green{
+            background-color:  #B0DDBE;
+        }
+
+        .task .title{
+            margin-left: 5px;
+        }
+
+        .empty{
+            width: 45px;
+        }
+
+        .main{
+            padding: 10px;
+            border-radius: 0px 0px 5px 5px;
+        }
+
+        .input input[type=number]{
+            border: 1px solid #e4e4e4;
+            outline: none;
+            background-color: #F3F5F6;
+            padding: 2px;
+            border-radius: 3px;
+        }
+
+        .input input[type=button]{
+            border: 1px solid #0eb7ff;
+            outline: none;
+            background-color: #00B0FC;
+            padding: 2px;
+            color: #fff;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .output{
+            background-color: #ffffff57;
+            border: 1px solid #ffffff4b;
+            margin-top: 10px;
+            border-radius: 3px;
+        }
+        .output p{
+            padding: 0px 5px 0px 5px;
+            margin: 2px;
+        }
+
+        #cssColorCode{
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            border: 1px solid black;
+            margin: 5px 0px 5px 7px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="task">
+            <!-- cai nay de cho dep thoi hjhj -->
+            <div class="dot">
+                <div class="circle red"></div>
+                <div class="circle yellow"></div>
+                <div class="circle green"></div>
+            </div>
+            
+            <p class="title">Bài 2</p>
+            <div class="empty"></div>
+        </div>
+        <div class="main">
+            <div class="input">
+                <input type="number" id="number_input" placeholder="Nhập một số">
+                <input type="button" value="Nhập" onclick="tinh_toan()">    
+            </div>
+            <div class="output">
+                <p id="ket_qua">Kết quả</p>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    document.getElementById('number_input').onkeydown = function(e){
+        if(e.keyCode == 13){
+            tinh_toan();
+        }
+    };
+
+    let numberArray = [];
+
+    function randomInput(){
+        let inputNumber = document.getElementById('number_input').value;
+        for(i = 0 ; i < inputNumber ;i++){
+            let randomNumber = Math.floor(Math.random() * 20) + 1;
+            numberArray.push(randomNumber);
+        }
+    }
+
+
+    function tinh_toan(){
+        
+        let result = '';
+        let sumOfArray = 0;
+
+        randomInput();
+
+        let maxOfArray = numberArray[0];
+        let minOfArray = numberArray[0];
+        let arraySize = numberArray.length;
+
+        result += `Mang: `;
+
+        for(i = 0 ; i< arraySize ; i++){
+            result += `${numberArray[i]} `;
+        }
+
+        for(i = 0 ; i < arraySize ; i++){
+            if(maxOfArray < parseInt(numberArray[i])){
+                maxOfArray = parseInt(numberArray[i]);
+            }else if(minOfArray > parseInt(numberArray[i])){
+                minOfArray = parseInt(numberArray[i]);
+            }
+            
+        }
+
+
+        result += `<br/>GTLN (Max): ${maxOfArray}<br/>GTNN (Min): ${minOfArray}`;
+
+        for(i=0; i < arraySize ; i++){
+            sumOfArray += parseInt(numberArray[i]);
+        }
+
+        result += `<br/>Tong cua mang: ${sumOfArray}`;
+
+        document.getElementById('ket_qua').innerHTML= `${result}`;
+
+        for(i = 0 ; i< arraySize ;i++){
+            numberArray.pop();
+        }
+    }
+</script>
+</html>
