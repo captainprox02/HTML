@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buoi 3 JavaScript</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://wallpaperaccess.com/full/3781373.jpg');
+            background-repeat: no-repeat;
+            background-size:cover;
+            color: rgb(68, 68, 68);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container{
+            background-color: #ffffffaf;
+            border-radius: 7px;
+            backdrop-filter: blur(30px);
+            /* width: 350px; */
+            max-width: 600px;
+        }
+
+        .task{
+            background-color: #f3f5f6c0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+            padding: 0px;
+            height: 30px;
+            border-radius: 7px 7px 0px 0px;
+        }
+
+        .dot{
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+        }
+
+        .circle{
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            margin-left: 5px;
+        }
+        .red{
+            background-color: #FF6F6F;
+        }
+
+        .yellow{
+            background-color: #F7DA87;
+        }
+        .green{
+            background-color:  #B0DDBE;
+        }
+
+        .task .title{
+            margin-left: 5px;
+        }
+
+        .empty{
+            width: 45px;
+        }
+
+        .main{
+            padding: 10px;
+            border-radius: 0px 0px 5px 5px;
+        }
+
+        .input{
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .input input[type=number]{
+            border: 1px solid #e4e4e4;
+            outline: none;
+            background-color: #F3F5F6;
+            padding: 2px;
+            border-radius: 3px;
+        }
+
+        .input input[type=text]{
+            border: 1px solid #e4e4e4;
+            outline: none;
+            background-color: #F3F5F6;
+            padding: 2px;
+            border-radius: 3px;
+        }
+
+        .input input[type=password]{
+            border: 1px solid #e4e4e4;
+            outline: none;
+            background-color: #F3F5F6;
+            padding: 2px;
+            border-radius: 3px;
+        }
+
+        .input input[type=button]{
+            border: 1px solid #0eb7ff;
+            outline: none;
+            background-color: #00B0FC;
+            padding: 2px;
+            color: #fff;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .true{
+            color: rgb(0, 214, 0);
+            visibility: hidden;
+            
+        }
+
+        .false{
+            color: #ed4242;
+            visibility: hidden;
+        }
+
+        .error{
+            color: #ed4242;
+            font-size: 10px !important;
+            margin: 0px;
+            font-weight: 600;
+        }
+
+        .output{
+            background-color: #ffffff57;
+            border: 1px solid #ffffff4b;
+            margin-top: 10px;
+            border-radius: 3px;
+        }
+        .output p{
+            padding: 0px 5px 0px 5px;
+            margin: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="task">
+            <!-- cai nay de cho dep thoi hjhj -->
+            <div class="dot">
+                <div class="circle red"></div>
+                <div class="circle yellow"></div>
+                <div class="circle green"></div>
+            </div>
+            
+            <p class="title">Form check</p>
+            <div class="empty"></div>
+        </div>
+        <div class="main">
+            <div class="input">
+                <input type="text" id="input_name" placeholder="Full name" onkeyup="oku_check_name()">
+                <i id="name_check_true" class="fas fa-check-circle true"></i>
+                <i id="name_check_false" class="fas fa-times-circle false"></i>
+                
+            </div>
+            <span class="error" id="name_error"></span>
+            <div class="input">
+                <span style="font-weight: bold;">Gender:</span>
+                
+                <input id="male" name="gender" type="radio" onclick="ocl_check_gender()">
+                <span>Male</span>
+
+                <input id="female" name="gender" type="radio" onclick="ocl_check_gender()">
+                <span>Female</span>
+
+                <i id="gender_check_true" class="fas fa-check-circle true"></i>
+                <i id="gender_check_false" class="fas fa-times-circle false"></i>
+                
+            </div>
+            <span class="error" id="gender_error"></span>
+            <div class="input">
+                <input type="text" id="address_input" placeholder="Address" onkeyup="oku_address_check()"> 
+                <i id="address_check_true" class="fas fa-check-circle true"></i>
+                <i id="address_check_false" class="fas fa-times-circle false"></i>
+                
+            </div>
+            <span class="error" id="address_error"></span>
+            <div class="input">
+                <input type="text" id="email_input" placeholder="Email" onkeyup="oku_check_email()"> 
+                <i id="email_check_true" class="fas fa-check-circle true"></i>
+                <i id="email_check_false" class="fas fa-times-circle false"></i>
+                
+            </div>
+            <span class="error" id="email_error"></span>
+            <div class="input">
+                <input type="password" id="password_input" placeholder="Password" onkeyup="oku_check_password()"> 
+                <i id="password_check_true" class="fas fa-check-circle true"></i>
+                <i id="password_check_false" class="fas fa-times-circle false"></i>
+                
+            </div>
+            <span class="error" id="password_error"></span>
+            <div class="input">
+                <input type="password" id="repassword_input" placeholder="re-password" onkeyup="oku_check_repassword()"> 
+                <i id="repassword_check_true" class="fas fa-check-circle true"></i>
+                <i id="repassword_check_false" class="fas fa-times-circle false"></i>
+                
+            </div>
+            <span class="error" id="repassword_error"></span>
+            <div class="input">
+                <input type="text" id="number_input" placeholder="Hobbies"> 
+            </div>
+            
+            <div class="center_button">
+                <div class="input">
+                    <input type="button" value="Submit" onclick="check_form()">
+                </div>
+            </div>
+               
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    //ten
+    function oku_check_name(){
+        let name = document.getElementById('input_name').value;
+        let regex_name = /^[A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]*(?:[ ][A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]*)*$/;
+        if(name.length == 0){
+            document.getElementById('name_check_true').style.visibility =  "hidden";
+            document.getElementById('name_check_false').style.visibility =  "visible";
+            document.getElementById('name_check_true').style.width = "0px";
+        }else if(!regex_name.test(name)){
+            document.getElementById('name_check_true').style.visibility =  "hidden";
+            document.getElementById('name_check_false').style.visibility =  "visible";
+            document.getElementById('name_check_true').style.width = "0px";    
+        }else{
+            document.getElementById('name_check_false').style.visibility =  "hidden";
+            document.getElementById('name_check_true').style.visibility =  "visible";
+            document.getElementById('name_check_false').style.width = "0px";
+            document.getElementById('name_error').innerHTML = ``;    
+
+        }
+    }
+
+    function check_name(name){
+        let regex_name = /^[A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]*(?:[ ][A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]*)*$/;
+        if(name.length == 0){
+            document.getElementById('name_error').innerHTML = `Tên khum được để trống`;
+            return false;
+        }else if(!regex_name.test(name)){
+            document.getElementById('name_error').innerHTML = `Tên khum hợp lệ`;
+            return false;
+        }else{
+            document.getElementById('name_error').innerHTML = ``;
+        }
+    }
+
+    //gioi_tinh
+
+    function ocl_check_gender(){
+        document.getElementById('gender_check_false').style.visibility =  "hidden";
+        document.getElementById('gender_check_true').style.visibility =  "visible";
+        document.getElementById('gender_check_false').style.width = "0px";    
+        document.getElementById('gender_error').innerHTML = ``;
+    }
+
+    function check_gender(genderArray){
+        let checkGender = false;
+        for(i = 0 ;  i < genderArray.length ; i++){
+            if(genderArray[i].checked){
+                checkGender = true;
+            }
+        }
+
+        if(checkGender == false){
+            document.getElementById('gender_error').innerHTML = `Nhap gioi tinh`;
+            return false;
+        }else{
+            document.getElementById('gender_error').innerHTML = ``; 
+        }
+    }
+    
+    //Dia chi
+
+    function oku_address_check(){
+        let name = document.getElementById('address_input').value;
+        let regex_name = /^[A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]*(?:[ ][A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]*)*$/;
+        if(name.length == 0){
+            document.getElementById('address_check_true').style.visibility =  "hidden";
+            document.getElementById('address_check_false').style.visibility =  "visible";
+            document.getElementById('address_check_true').style.width = "0px";
+        }else if(!regex_name.test(name)){
+            document.getElementById('address_check_true').style.visibility =  "hidden";
+            document.getElementById('address_check_false').style.visibility =  "visible";
+            document.getElementById('address_check_true').style.width = "0px";    
+        }else{
+            document.getElementById('address_check_false').style.visibility =  "hidden";
+            document.getElementById('address_check_true').style.visibility =  "visible";
+            document.getElementById('address_check_false').style.width = "0px";
+            document.getElementById('address_error').innerHTML = ``;    
+
+        }
+    }
+
+    function check_address(address){
+        let regex_address = /^[A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]*(?:[ ][A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]*)*$/;
+        if(address.length == 0){
+            document.getElementById('address_error').innerHTML = `Địa chỉ khum được để trống`;
+            return false;
+        }else if(!regex_address.test(address)){
+            document.getElementById('address_error').innerHTML = `Địa chỉ khum hợp lệ`;
+            return false;
+        }else{
+            document.getElementById('address_error').innerHTML = ``;
+        }
+    }
+    
+    //email
+
+    function oku_check_email(){
+        let email = document.getElementById('email_input').value;
+        let regex_email = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/;
+        if(email.length == 0){
+            document.getElementById('email_check_false').style.visibility =  "visible";
+            document.getElementById('email_check_true').style.visibility =  "hidden";
+            document.getElementById('email_check_true').style.width = "0px";
+        }else if(!regex_email.test(email)){
+            document.getElementById('email_check_true').style.visibility =  "hidden";
+            document.getElementById('email_check_false').style.visibility =  "visible";
+            document.getElementById('email_check_true').style.width = "0px";    
+        }else{
+            document.getElementById('email_check_false').style.visibility =  "hidden";
+            document.getElementById('email_check_true').style.visibility =  "visible";
+            document.getElementById('email_check_false').style.width = "0px";
+            document.getElementById('email_error').innerHTML = ``;    
+
+        }
+    }
+
+    function check_email(email){
+        let regex_email = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/;
+        if(email.length == 0){
+            document.getElementById('email_error').innerHTML = `Email khum được để trống`;
+            return false;
+        }else if(!regex_email.test(email)){
+            document.getElementById('email_error').innerHTML = `Email khum hợp lệ`;
+            return false;
+        }else{
+            document.getElementById('email_error').innerHTML = ``;
+        }
+    }
+
+
+    //password
+
+
+    function oku_check_password(){
+        let password = document.getElementById('password_input').value;
+        let regex_password = /^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$/;
+        if(password.length == 0){
+            document.getElementById('password_check_false').style.visibility =  "visible";
+            document.getElementById('password_check_true').style.visibility =  "hidden";
+            document.getElementById('password_check_true').style.width = "0px";
+        }else if(!regex_password.test(password)){
+            document.getElementById('password_check_true').style.visibility =  "hidden";
+            document.getElementById('password_check_false').style.visibility =  "visible";
+            document.getElementById('password_check_true').style.width = "0px";    
+        }else{
+            document.getElementById('password_check_false').style.visibility =  "hidden";
+            document.getElementById('password_check_true').style.visibility =  "visible";
+            document.getElementById('password_check_false').style.width = "0px";
+            document.getElementById('password_error').innerHTML = ``;    
+            
+        }
+    }
+
+
+    function check_password(password){
+
+        //Phan nay em test regex nen lam dung regex hoi nhieu :v
+        
+        let regex_password = /^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$/;
+        if(password.length == 0){
+            document.getElementById('password_error').innerHTML = `Mật khẩu khum được để trống`;
+            return false;
+        }else if(!regex_password.test(password)){
+            document.getElementById('password_error').innerHTML = `Mật khẩu chứa 8 kí tự <br/> Ít nhất 1 kí tự đặc biệt (!,@,#,$,&)<br/> Ít nhất 2 kí tự In hoa <br/>Ít nhất 2 kí tự số <br> Ex: abcAB12@`;
+            return false;
+        }else{
+            document.getElementById('password_error').innerHTML = ``;
+        }
+    }
+
+    //re-password
+
+    function oku_check_repassword(){
+        let repassword = document.getElementById('repassword_input').value;
+        let password = document.getElementById('password_input').value;
+
+        if(password != repassword){
+            document.getElementById('repassword_check_false').style.visibility =  "visible";
+            document.getElementById('repassword_check_true').style.visibility =  "hidden";
+            document.getElementById('repassword_check_true').style.width = "0px";
+        }else{
+            document.getElementById('repassword_check_false').style.visibility =  "hidden";
+            document.getElementById('repassword_check_true').style.visibility =  "visible";
+            document.getElementById('repassword_check_false').style.width = "0px";
+            document.getElementById('repassword_error').innerHTML = ``;    
+            
+        }
+    }
+
+    function check_repassword(repassword, password){
+        if(repassword == password){
+            document.getElementById('repassword_error').innerHTML = ``;
+        }else{
+            document.getElementById('repassword_error').innerHTML = `Mật khẩu khum khớp`;
+            return false;
+        }
+    }
+
+
+    function check_form(){
+
+        var flag = true;
+
+        let full_name = document.getElementById('input_name').value;
+        check_name(full_name);
+        let genderArray = document.getElementsByName('gender');
+        check_gender(genderArray);
+        let address = document.getElementById('address_input').value;
+        check_address(address);
+        let email = document.getElementById('email_input').value;
+        check_email(email);
+        let password = document.getElementById('password_input').value;
+        check_password(password);
+        let repassword = document.getElementById('repassword_input').value;
+        check_repassword(repassword, password);
+    }
+</script>
+
+<script src="https://kit.fontawesome.com/cb1ae4cd96.js" crossorigin="anonymous"></script>
+
+</html>
