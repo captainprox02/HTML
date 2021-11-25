@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="SHORTCUT ICON" href="./image/Prox_logo_white.png">
+    <title>DOM and BOM</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    
+	<div class="login-box">
+        <h2>Bài tập nà ( •̀ ω •́ )✧</h2>
+        <form>
+          <div class="user-box">
+            <input id="input_name" type="text" name="" required="">
+            <label>Nhập link Facebook đi nà OwO</label>
+          </div>
+          <!-- <div class="user-box">
+            <input type="password" name="" required="">
+            <label>Password</label>
+          </div> -->
+          <a href="#">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <input id="btn_submit" type="button" value="Lấy Username hoặc ID (^^ゞ" onclick="get_name()">
+          </a>
+        </form>
+      </div>
+</body>
+<script>
+
+function get_name(){
+    let name = document.getElementById('input_name').value ;
+    if(name[name.length-1] == '/'){
+        name = name.slice(0,name.length-1);
+    }
+    const regex = /(?:(?:http|https):\/\/)?(?:www.)?facebook.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[?\w\-]*\/)?(?:profile.php\?id=(?=\d.*))?([\w\-|\w\.]*)?/;
+    const found = name.match(regex);
+
+    if(name != "" && name != null){
+        alert("Hế nhô ( •̀ ω •́ )✧ : " + found[1]);
+    }
+
+}
+</script>
+</html>
